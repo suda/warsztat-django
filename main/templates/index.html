@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
+{% load bootstrap_pagination %}
 {% block navbar-right %}<li><a href="{% url "upload" %}" class="btn btn-primary">Dodaj zdjęcie</a></li>{% endblock %}
 {% block content %}
 	{% for photo in photos %}
@@ -9,4 +10,5 @@
 			<p>Autor: {{ photo.user }}, {{ photo.date|timesince }} temu</p>
 		</article>
 	{% endfor %}
+	{% bootstrap_paginate photos %}
 {% endblock %}
