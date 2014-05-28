@@ -6,14 +6,27 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import PhotoForm
 from .models import Photo
 
 def hello(request):
+	photos = Photo.objects.filter(published=True).order_by('-date')        
+	paginator = Paginator(photos, 1)
+
+	page = request.GET.get('page')
+	try:
+		photos = paginator.page(page)
+	except PageNotAnInteger:
+		photos = paginator.page(1)
+	except EmptyPage:
+		photos = paginator.page(paginator.num_pages)
+
 	return render(request, 'index.html', {
         'title': u'ostatnie zdjęcia',
-        'photos': Photo.objects.filter(published=True).order_by('-date')        
+        'photos': photos,
+        'paginator': paginator
     })
 
 def hello_name(request, name):
