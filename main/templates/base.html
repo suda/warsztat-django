@@ -1,0 +1,26 @@
+{% load bootstrap3 %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% if title %}{{ title|capfirst }} - {% endif %}Photogram</title>
+	{% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+	<header class="navbar">
+		<div class="container">
+			<a href="/" class="navbar-brand">Photogram</a>
+			<ul class="nav navbar-nav navbar-right">
+				{% block navbar-right %}{% endblock %}
+				<li><a href="{% url "logout" %}" class="">Wyloguj &raquo;</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="container">
+		{% bootstrap_messages %}
+		{% block content %}{% endblock %}
+	</div>
+	<footer><div class="container"><p>&copy;{% now "Y" %} me</p></div></footer>
+</body>
+</html>

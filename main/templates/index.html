@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block navbar-right %}<li><a href="{% url "upload" %}" class="btn btn-primary">Dodaj zdjęcie</a></li>{% endblock %}
+{% block content %}
+	{% for photo in photos %}
+		<article>
+			<h1>{{ photo.title }}</h1>
+			<img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+			<p>Autor: {{ photo.user }}, {{ photo.date|timesince }} temu</p>
+		</article>
+	{% endfor %}
+{% endblock %}
