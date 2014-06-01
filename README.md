@@ -648,6 +648,8 @@ Należy tu zwrócić uwagę na trzy rzeczy:
 
 3. Widok zwraca instancję klasy `django.http.HttpResponse`. Widoki zawsze zwracają tą klasę (lub jej potomka), nawet jeśli zwracają czysty tekst.
 
+Szczegółowe informacje n.t. `HttpRequest` i `HttpResponse` znajdują się w dokumentacji Django: [https://docs.djangoproject.com/en/1.6/ref/request-response/](https://docs.djangoproject.com/en/1.6/ref/request-response/).
+
 Mając działający widok, należy go przypisać do konkretnego adresu URL. Robi się to poprzez dopisanie go do pliku `urls.py`. Można zauważyć, że w projekcie znajdują się dwa takie pliki: jeden w katalogu głównym projektu i drugi w aplikacji.
 Plik w katalogu głównym powinien kierować ścieżkę URL na plik w katalogu aplikacji, który następnie rozdzieli podścieżki na swoje widoki. Taka konstrukcja posiada kilka zalet:
 
@@ -783,6 +785,9 @@ Dodatkowo każde pole dziedziczące po `django.db.models.Field` posiada takie at
 * **default** - domyślna wartość pola
 * **unique** - równe `True` wymusi unikalność wartości tego pola (tj. jego wartość nie może się powtarzać)
 * **verbose_name** oraz **help_text** - przechowuje czytelną nazwę pola oraz ew. pomoc. Automatycznie używane w panelu administracyjnym oraz formularzach
+
+Pełna lista typów pól oraz ich atrybutów, dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/models/fields/](https://docs.djangoproject.com/en/1.6/ref/models/fields/).
+
 
 ## Synchronizowanie bazy danych
 
@@ -1000,6 +1005,8 @@ In [6]: Photo.objects.all()
 Out[6]: [<Photo: Drugie zdjęcie>]
 ```
 
+Wszystkie możliwe metody dostępne są pod adresem: [https://docs.djangoproject.com/en/1.6/ref/models/querysets/](https://docs.djangoproject.com/en/1.6/ref/models/querysets/).
+
 ## Panel administracyjny
 
 Funkcją w Django która najbardziej oszczędza czas jest panel administracyjny automatycznie generowany na podstawie modeli. Po uruchomieniu `runserver_plus`, należy otworzyć w przeglądarce adres [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) i zalogować się danymi podanymi przy tworzeniu użytkownika.
@@ -1084,6 +1091,8 @@ raw_id_fields = ('user',)
 ```
 
 Innymi przydatnymi własnościami które w przypadku tego modelu nie są potrzebne, są bardzo przydatne to para `fields` i `exclude`  które pozwalają wyświetlać tylko podane pola lub wykluczyć je z edycji w panelu.
+
+Pełna dokumentacja panelu administracyjnego dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/contrib/admin/](https://docs.djangoproject.com/en/1.6/ref/contrib/admin/).
 
 # Autoryzacja oraz zarządzanie użytkownikami - użycie wbudowanych klas Django oraz ich rozszerzanie
 
@@ -1190,6 +1199,8 @@ Najczęściej używane tagi to:
 * **url** - generowanie adresu URL do widoku
 * **load** - ładowanie zewnętrznych tagów/filtrów
 
+Lista wszystkich tagów oraz filtrów, znajduje się pod adresem: [https://docs.djangoproject.com/en/1.6/ref/templates/builtins/](https://docs.djangoproject.com/en/1.6/ref/templates/builtins/).
+
 W powyższym przykładzie użyto zewnętrznej biblioteki `django-bootstrap3` pozwalającej szybko zintegrować projekt z frameworkiem Bootstrap [http://getbootstrap.com/](http://getbootstrap.com/). Należy ją oczywiście doinstalować:
 
 ```
@@ -1245,6 +1256,8 @@ class PhotoForm(forms.ModelForm):
 ```
 	
 Widać tu przykład nadpisywania konstruktora z wykonaniem go z superklasy. Jako, że `title` i `image` w modelu mają wlasność `blank` równą `True`, nie są one polami wymaganimi. W tym formularzu powinny być, więc to zachowanie zostaje ręcznie zmienione.	
+Pełna dokumentacja pól formularzy, dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/forms/fields/](https://docs.djangoproject.com/en/1.6/ref/forms/fields/).
+
 Następnie należy zmodyfikować widok tak aby używał formularza który należy zaimportować:
 
 ```python
