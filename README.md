@@ -1284,6 +1284,13 @@ Szablon `upload.html` powinien wyglądać tak:
 {% endblock %}
 ```
 
+Wewnątrz formularza występuje tag `{% csrf_token %}` który służy zabezpieczeniu przed atakami typu CSRF (przekierowywanie użytkownika na atakowaną stronę bez jego wiedzy). Dodaje on ukryte pole formularza podobne do:
+
+```html
+<input type='hidden' name='csrfmiddlewaretoken' value='qGfJZH9qYlnst9mCd3ZdsamrlY7qmdyQ' />
+```
+Token jest automatycznie weryfikowany przez middleware Django, należy jednak pamiętać o dodawaniu tego tagu przy formularzach używających metody **POST**.
+
 Po odświeżeniu strony widać ładny formularz dodawania zdjęć. Aby obsłużyć ich ładowanie na serwer, należy podmienić słowo kluczowe `pass` na:
 
 ```python
