@@ -291,6 +291,25 @@ date.day            date.isocalendar    date.max            date.mro            
 date.fromordinal    date.isoformat      date.min            date.replace        date.timetuple      date.weekday
 ```
 
+Przyjętym sposobem organizacji importów jest następująca kolejność:
+
+1. Standardowe moduły pythona
+2. Moduły instalowane via `pip`
+3. Moduły z projektu
+
+Każda sekcja powinna być oddzielona pustą linią. Przykładowe importy powinny wyglądać następująco:
+
+```python
+import os
+from datetime import datetime
+
+from django.shortcuts import render
+from django.core.urlresolvers import reverse
+
+from .models import Photo
+from .forms import PhotoForm
+```
+
 ## Funkcje
 
 Funkcje deklarowane są za pomocą słowa kluczowego `def`:
