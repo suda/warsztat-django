@@ -783,7 +783,6 @@ W Django schemat bazy danych przechowywany jest w postaci modeli które deklarow
 &nbsp;
 
 &nbsp;
-
 ```python
 from django.contrib.auth.models import User
 
@@ -806,7 +805,7 @@ Trzecim polem jest data typu `DateTimeField` przechowująca datę oraz czas. Pos
 * **auto_now** - ustawione na `True` spowoduje ustawienie wartości pola na aktualną datę i czas podczas zapisywania obiektu. Bardzo przydatne przy polach zapisujących ostatnią modyfikację obiektu
 * **auto_now_add** - ustawione na `True` spowoduje ustawienie wartości pola na aktualną datę i czas podczas pierwszego zapisywania obiektu. Przydatne przy przechowywaniu daty utworzenia obiektu.
 
-Ostatnim polem jest faktyczny obrazek który zadeklarowano typem `ImageField`. Typ ten dziedziczy po `FileField` które wymaga parametru `upload_to` wskazującego gdzie względem zmiennej `MEDIA_ROOT` w `settings.py` plik zostanie zuploadowany. Typ `ImageField` dodatkowo sprawdza czy plik jest obrazkiem a nie tylko plikiem. Do tego wymaga paczki `Pillow`:
+Ostatnim polem jest obrazek który zadeklarowano typem `ImageField`. Typ ten dziedziczy po `FileField` które wymaga parametru `upload_to` wskazującego gdzie względem zmiennej `MEDIA_ROOT` w `settings.py` plik zostanie zuploadowany. Typ `ImageField` dodatkowo sprawdza czy plik jest obrazkiem a nie tylko plikiem. Do tego wymaga paczki `Pillow`:
 
 ```
 $ pip install pillow
@@ -827,7 +826,7 @@ Dodatkowo każde pole dziedziczące po `django.db.models.Field` posiada takie at
 * **db_index** - równe `True` wymusi nałożenie indeksu w bazie danych. Pola typu `ForeignKey` automatycznie go nakładają, lecz może być przydantny także na innych polach
 * **default** - domyślna wartość pola
 * **unique** - równe `True` wymusi unikalność wartości tego pola (tj. jego wartość nie może się powtarzać)
-* **verbose_name** oraz **help_text** - przechowuje czytelną nazwę pola oraz ew. pomoc. Automatycznie używane w panelu administracyjnym oraz formularzach
+* **verbose_name** oraz **help_text** - przechowuje czytelną nazwę pola oraz pomoc. Używane w panelu administracyjnym oraz formularzach
 
 Pełna lista typów pól oraz ich atrybutów, dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/models/fields/](https://docs.djangoproject.com/en/1.6/ref/models/fields/).
 
@@ -882,6 +881,10 @@ INSTALLED_APPS = (
 
 oraz zsynchronizować ponownie bazę:
 
+&nbsp;
+
+&nbsp;
+
 ```
 $ python manage.py syncdb
 ```
@@ -930,6 +933,9 @@ Installed 0 object(s) from 0 fixture(s)
 
 Poza migracjami schematu, South pozwala także tworzych migracje danych (np. przenoszenie danych pomiędzy tabelami). W ten sposób zarządzając zmianami w bazie, można być pewnym takiego samego schematu na wszystkich maszynach.
 
+&nbsp;
+
+&nbsp;
 ## ORM
 
 Gdy model jest już stworzony i zmigrowany można zacząć wykonywać operacje CRUD (tworzenie, odczytywanie, aktualizacja, usuwanie). Każda klasa dziedzicząca po `django.db.models.Model` posiada obiekt `objects` będący instancją klasy `QuerySet`. Aby eksplorować możliwości ORM Django, najlepiej jest uruchomić interaktywną konsolę:
@@ -1188,6 +1194,38 @@ Teraz po wejściu na adres [http://127.0.0.1:8000/upload/](http://127.0.0.1:8000
 
 Trzecim, nieomówionym komponentem architektury MTV jest szablon. Django posiada własny język szablonów którego głównym założeniem było wyeliminowanie logiki biznesowej z warstwy prezentacji, dlatego np. nie można wykonywać kodu Pythona wewnątrz szablonów. Pliki szablonów są przechowywane w katalogu `templates` aplikacji. Można zatem stworzyć pierwszy plik bazowy który będzie stanowił podstawę dla innych. Zwyczajowo nazywa się go `base.html`:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ```html
 {% load bootstrap3 %}
 <!doctype html>
@@ -1280,6 +1318,14 @@ Po odświeżeniu powinna pojawić się strona z wyrenderowanego szablonu.
 
 Mając zdefiniowany model zamiast żmudnie kodować formularz w HTML, można użyć specjalnych klas w Django o nazwie `ModelForm` który potrafi generować je automatycznie. Należy więc otworzyć plik `forms.py` i umieścić w nim:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ```python
 # -*- encoding: utf-8 -*-
 
@@ -1323,6 +1369,18 @@ def upload(request):
 ```
 
 Szablon `upload.html` powinien wyglądać tak:
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```html
 {% extends "base.html" %}
@@ -1369,6 +1427,8 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 ```
 
+&nbsp;
+
 Dodano nimi dwie funkcje:
 
 * przekierowanie po zapisaniu formularza które można uzyskać używając skrótu `django.shortcuts.redirect` a adres URL został wygenerowany automatycznie z pliku `urls.py` używając nazwy widoku oraz metody `reverse` która jest odpowiednikiem tagu `url` w szablonie.
@@ -1407,6 +1467,14 @@ Następnie należy uzupełnić szablon:
 
 Ostatnia rzecz jaka pozostała to włączenie serwowania załadowanych plików przez `runserver_plus` zmieniając główny plik `urls.py` na:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ```python
 from django.conf.urls import patterns, include, url
 
@@ -1437,6 +1505,25 @@ MEDIA_URL = '/media/'
 
 Bardzo ważną częścią tworzenia oprogramowania jest jego jakość. Jedną z metod jej utrzymywania jest TDD czyli programowanie gdzie w pierwszej kolejności pisze się testy sprawdzające prawidłowość kodu a następnie pisze się kod który je przechodzi. Django posiada wbudowaną obsługę testów jednostkowych. Testy powinny znajdować się w pliku `tests.py` w katalogu aplikacji. Przykładowy test sprawdzający widok `hello()` pod kątem wyświetlania nieopublikowanych zdjęć:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 ```python
 # -*- encoding: utf-8 -*-
 
@@ -1528,6 +1615,18 @@ images/
 ```
 
 Teraz można dodać wszystkie pozostałe pliki:
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```
 $ git add .
