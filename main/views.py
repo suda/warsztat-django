@@ -22,7 +22,7 @@ def hello(request):
 		photos = paginator.page(1)
 	except EmptyPage:
 		photos = paginator.page(paginator.num_pages)
-
+	
 	return render(request, 'index.html', {
         'title': u'ostatnie zdjęcia',
         'photos': photos,

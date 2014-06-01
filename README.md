@@ -46,6 +46,8 @@ W systemie domyślnie zainstalowany jest przestarzały manager paczek Pythona o 
 $ sudo easy_install pip
 ```
 
+### requirements.txt
+
 ## Virtualenv oraz virtualenvwrapper
 
 Każdy projekt posiada swój zestaw zależności z różnymi wersjami paczek. Aby móc pracować z wieloma takimi zestawami, powstało narzędzie o nazwie `virtualenv` oraz nakładka na niego, ułatwiające nimi zarządzanie. Na początek należy je zainstalować:
@@ -76,6 +78,13 @@ $ cdvirtualenv
 ```
 
 Teraz wszystkie paczki instalowane z tego terminala, będą przechowywane w oddzielnym folderu, dzięki czemu nie będą powodować konfliktów z innymi.
+
+## Edytory i IDE
+
+Istnieje wiele edytorów/IDE obsługujących Pythona lecz dwa są najczęściej wybierane:
+
+* Sublime Text [http://www.sublimetext.com/](http://www.sublimetext.com/) - darmowy edytor z potężnym systemem wtyczek pozwalającym na wygodną pracę z Pythonem i Django
+* PyCharm [http://www.jetbrains.com/pycharm/](http://www.jetbrains.com/pycharm/) - płatne IDE świetnie zintegrowane z Pythonem oraz Django oferując introspecję, obsługę virtualenv, git oraz wiele innych.
 
 ## Interaktywna konsola Pythona
 Wspomniana wcześniej interaktywna konsola Pythona to jedna z najsilniejszych jego stron. Można ją jednak jeszcze bardziej wzmocnić instalując paczkę IPython która dodaje takie funkcje jak podpowiadanie komend oraz paczek, zaawansowany podgląd zmiennych, obsługa profilera oraz debuggera i wiele, wiele innych. Instalacja wygląda tak samo jak w przypadku virtualenv (przed instalacją najlepiej zamknąć wszystkie terminale z Pythonem i otworzyć nowy):
@@ -1550,3 +1559,27 @@ Branch stronicowanie set up to track remote branch stronicowanie from origin.
 ```
 
 Gdy gałąź jest już aktualna na serwerze, należy stworzyć tzw. **pull request** na GitHubie/Bitbuckecie, który da znać reszcie zespołu o zmianach, pozwoli je sprawdzić i jeśli wszystko jest ok, złączyć je z gałęzią `master`.
+
+# Tips & tricks
+
+## Werkzeug
+
+Używając komendy `runserver_plus` "pod maską" używana jest biblioteka WSGI `Werkzeug` która pozwala m.in. bardzo wygodny sposób odpluskwiania kodu. Gdy podczas przetwarzania zapytania zostanie wywołany wyjątek wyświetli się komunikat z dokładnymi informacjami n.t. błędu. Można także specjalnie wywołać tą stronę dodając przed `return` w widoku `hello()`:
+
+```python
+raise Exception()
+```
+
+Po odświeżeniu strony głównej widoczny jest **traceback** z liniami kodu kolejno odpowiadającymi za dojście do wyjątku. Kliknięcie w linię, pokazuje otaczający wyjątek kod, lecz najbardziej przydatna jest ikonka terminala z prawej strony linii. Otwiera ona interaktywną konsolę zatrzymaną w tej linii. Pozwala ona na podejrzenie zawartości zmiennych a nawet wykonywanie funkcji:
+
+```
+[console ready]
+>>> page
+u'1'
+>>> photos
+<Page 1 of 2>
+>>> Photo.objects.filter(published=True).order_by('-date')
+[<Photo: Joffrey>, <Photo: Tommen>]
+```
+
+Jest to bardzo wygodny sposób na odnalezienie błędów bez cyklu zmień/odśwież.
