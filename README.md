@@ -1,6 +1,6 @@
-# Podstawy Pythona - typy danych, klasy, słowniki, touple, tablice, dekoratory, wykorzystanie virtualenv oraz pip
+# Podstawy Pythona
 
-## Wstęp do Pythona
+## Wstęp do języka
 
 Python jest dynamicznie typowanym językiem interpretowanym którego składnia jest bardzo zbliżona do języka angielskiego, nie używa tylu znaków interpunkcyjnych jak języki wywodzące się z C (jak Java lub PHP). Bardzo ważnym aspektem są wcięcia, które są wymagane oraz w obrębie pliku muszą używać tego samego stylu (spacje lub tabulacja). Jest to najczęstszy ból dla początkujących lecz z czasem staje się odruchowe i powoduje czysty i czytelny kod.
 
@@ -30,14 +30,6 @@ Aby łatwiej instalować paczki PyPi powstało narzędzie `pip`. Dzięki niemu, 
 
 ### Linux
 Pip powinien być dostępny w managerze pakietów jako `python-pip`.
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 ### OS X
 W systemie domyślnie zainstalowany jest przestarzały manager paczek Pythona o nazwie `easy_install`. Można go użyć do zainstalowania pipa:
@@ -107,7 +99,6 @@ $ pip install ipython
 
 Teraz aby dostać się do konsoli Pythona (a konkretnie IPythona) należy uruchomić `ipython` który powinien przywitać podobnym komunikatem:
 
-&nbsp;
 ```
 $ ipython
 Python 2.7.2 (default, Oct 11 2012, 20:14:37)
@@ -154,14 +145,6 @@ Należy zauważyć, że IPython automatycznie dodaje wcięcia gdy są potrzebne 
 
 Python zawiera wszystkie podstawowe typy danych takie jak `int`, `float`, `string` czy `boolean` oraz kilka "tablicowych" typów znanych z innynnych języków pod inną nazwą:
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
 ### Lista
 
 ang. `list`, czyli podstawowa tablica indeksowana liczbami, odpowiednik `Array` w JavaScripcie/Ruby/PHP. Deklarowana za pomocą nawiasów kwadratowych:
@@ -201,6 +184,19 @@ Out[6]: ['a', 'b', 'c', 'd']
 
 ang. `touple`, jest odmianą listy której nie można modyfikować. Definiowana z użyciem nawiasów okrągłych.
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 ```
 In [1]: t = (1, 'a', 3.0)
 
@@ -299,6 +295,15 @@ Przyjętym sposobem organizacji importów jest następująca kolejność:
 
 Każda sekcja powinna być oddzielona pustą linią. Przykładowe importy powinny wyglądać następująco:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 ```python
 import os
 from datetime import datetime
@@ -347,6 +352,14 @@ Dodatkowo funkcje mogą przyjmować dwa specjalne parametry: `*args` i `**kwargs
 
 Deklarując te parametry, funkacja może otrzymywać zmienną ilość parametrów:
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 ```
 In [1]: def show(*args, **kwargs):
    ...:     for arg in args:
@@ -393,6 +406,13 @@ Należy zauważyć, że metody klasy posiadają parametr `self` (odpowiednik `th
 ## Wyjątki
 
 W Pythonie wszelkie nieoczekiwane wartości lub wyniki wewnątrz funkcji wyrzucają wyjątki (w odróżnieniu od zwracania kodów błędu). Takie wyjątki można przechwytywać i obsługiwać:
+
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```
 In [1]: starks = ['Brab', 'Robb']
@@ -448,8 +468,7 @@ In [3]: motto()
 Out[3]: 'a lannister always pays his debts.'
 ```
 
-# Podstawy Django - omówienie podstaw modelu, kontrolera i szablonu (MTV) w kontekście podstawowej aplikacji do publikowania zdjęć
-
+# Podstawy Django
 ## Pierwszy projekt
 
 Pora rozpocząć pierwsze kroki z Django. Należy rozpocząć od stworzenia świeżego virtualenv-a:
@@ -496,6 +515,17 @@ lub na systemie Windows:
 ```
 
 Nowo utworzony projekt powinien mieć następującą strukturę folderów:
+
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```
 photogram
@@ -546,6 +576,13 @@ $ pip install django-extensions Werkzeug ipython
 ```
 	
 Po zainstalowniu paczki, należy zmodyfikować plik `settings.py` a konkretnie zmienną `INSTALLED_APPS` dodając do niej `django_extensions`:
+
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```python
 INSTALLED_APPS = (
@@ -618,7 +655,7 @@ Django implementuje zmodyfikowaną wersję MVC o nazwie MTV czyli model-szablon-
 Dochodzi do tego **definicja adresów URL** w pliku `urls.py` która definiuje pod jakim adresem wyświetlić który widok.
 
 
-# Kontrolery oraz pliki urls.py - tworzenie szkieletu aplikacji oraz podłączanie widoków do konkretnych adresów URL
+# Kontrolery oraz pliki urls.py
 
 Aby stworzona aplikacja była "zauważona" przez Django i reagowała na zapytania, należy wykonać kilka kroków. Po pierwsze należy dodać ją do `INSTALLED_APPS` w `settings.py`:
 
@@ -715,7 +752,7 @@ def hello_name(request, name):
 
 Nazwane grupy w wyrażeniu regularnym (rozpoczynające się od `?P<…>`) zostaną przekazane do widoku pod tą samą nazwą.
 
-# Modele oraz ORM - tworzenie modeli, dostęp do danych oraz migracje za pomocą biblioteki South
+# Modele oraz ORM
 
 Jedną z najważniejszych cech aplikacji jest dostęp do bazy. Django dzięki swojemu modułowi ORM (mapper relacji obiektów), pozwala na prosty i wygodny dostęp do danych bez względu na serwer jaki jest używany. Django standardowo obsługuje:
 
@@ -740,6 +777,12 @@ Jak widać, zmienna `DATABASES` jest słownikiem, ponieważ Django może obsług
 ## Pierwszy model
 
 W Django schemat bazy danych przechowywany jest w postaci modeli które deklarowane są jako klasy dziedziczące po `django.db.models.Model` w plikach `models.py`. Tworząc projekt na podobieństwo aplikacji Instagram (którego backend jest napisany w Django) model zdjęć mógłby wyglądać tak:
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ```python
 from django.contrib.auth.models import User
@@ -1094,7 +1137,7 @@ Innymi przydatnymi własnościami które w przypadku tego modelu nie są potrzeb
 
 Pełna dokumentacja panelu administracyjnego dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/contrib/admin/](https://docs.djangoproject.com/en/1.6/ref/contrib/admin/).
 
-# Autoryzacja oraz zarządzanie użytkownikami - użycie wbudowanych klas Django oraz ich rozszerzanie
+# Autoryzacja oraz zarządzanie użytkownikami
 
 Django posiada wbudowane klasy do zarządzania użytkownikami oraz ich grupami. Pozwala to w łatwy sposób autoryzować i ograniczać dostęp do funkcji zarówno w projekcie jak i panelu administracyjnym. Na początek można wyświetlić widoki logowania/wylogowania. Django dostarcza je także. W głównym pliku `urls.py` pod linią panelu administracyjnego należy dopisać:
 
@@ -1141,7 +1184,7 @@ url(r'^upload/$', views.upload, name='upload'),
 
 Teraz po wejściu na adres [http://127.0.0.1:8000/upload/](http://127.0.0.1:8000/upload/) użytkownik niezalogowany, zostanie przekierowany na stronę logowania a zalogowany użytkownik zostanie przywitany swoim loginem. Oczywiście po zalogowaniu nastąpi przekierowanie na widok który wymagał logowania.
 
-# Widoki oraz formularze - wyświetlanie danych, ich modyfikacja oraz walidowanie
+# Widoki oraz formularze
 
 Trzecim, nieomówionym komponentem architektury MTV jest szablon. Django posiada własny język szablonów którego głównym założeniem było wyeliminowanie logiki biznesowej z warstwy prezentacji, dlatego np. nie można wykonywać kodu Pythona wewnątrz szablonów. Pliki szablonów są przechowywane w katalogu `templates` aplikacji. Można zatem stworzyć pierwszy plik bazowy który będzie stanowił podstawę dla innych. Zwyczajowo nazywa się go `base.html`:
 
@@ -1388,6 +1431,45 @@ oraz dodając do `settings.py` linijkę:
 
 ```python
 MEDIA_URL = '/media/'
+```
+
+# Testy
+
+Bardzo ważną częścią tworzenia oprogramowania jest jego jakość. Jedną z metod jej utrzymywania jest TDD czyli programowanie gdzie w pierwszej kolejności pisze się testy sprawdzające prawidłowość kodu a następnie pisze się kod który je przechodzi. Django posiada wbudowaną obsługę testów jednostkowych. Testy powinny znajdować się w pliku `tests.py` w katalogu aplikacji. Przykładowy test sprawdzający widok `hello()` pod kątem wyświetlania nieopublikowanych zdjęć:
+
+```python
+# -*- encoding: utf-8 -*-
+
+from django.test import TestCase
+from django.contrib.auth.models import User
+from django.test import Client
+
+from .models import Photo
+from .views import hello_name
+
+class MainTestCase(TestCase):
+    def setUp(self):
+    	user = User.objects.create_user('tyrion', 'tyrion@kingslanding.gov', 'shae')
+        Photo.objects.create(user=user, title=u'Photo without image', published=False)
+
+    def test_empty_photos_list(self):
+    	"""Sprawdzenie czy zdjęcia z publisjed=False nie są pokazywane"""
+    	client = Client()
+    	response = client.get('/')
+    	self.assertEqual(response.content.find('<article>'), -1)
+```
+
+Aby uruchomić testy, wystarczy wykonać:
+
+```
+$ python manage.py test
+Creating test database for alias 'default'...
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.166s
+
+OK
+Destroying test database for alias 'default'...
 ```
 
 # Praca z repozytorium Git
