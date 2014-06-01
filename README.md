@@ -48,6 +48,18 @@ $ sudo easy_install pip
 
 ### requirements.txt
 
+`pip` posiada parametr `-r` w którym można podać plik tekstowy zawierający listę paczek które mają zostać zainstalowane. Zwyczajowo taki plik nazywany jest `requirements.txt` i jest umieszczony w głównym katalogu projektu. Aby stworzyć taki plik, najszybszym sposobem jest zrzucenie zainstalowanych paczek komendą:
+
+```
+$ pip freeze > requirements.txt
+```
+
+aby zainstalować paczki z pliku należy wykonać:
+
+```
+$ pip install -r requirements.txt
+```
+
 ## Virtualenv oraz virtualenvwrapper
 
 Każdy projekt posiada swój zestaw zależności z różnymi wersjami paczek. Aby móc pracować z wieloma takimi zestawami, powstało narzędzie o nazwie `virtualenv` oraz nakładka na niego, ułatwiające nimi zarządzanie. Na początek należy je zainstalować:

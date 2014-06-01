@@ -1,0 +1,11 @@
+Django==1.6.5
+Pillow==2.4.0
+South==0.8.4
+Werkzeug==0.9.4
+django-bootstrap-pagination==1.5.0
+django-bootstrap3==4.6.0
+django-extensions==1.3.7
+gnureadline==6.3.3
+ipython==2.1.0
+six==1.6.1
+wsgiref==0.1.2
