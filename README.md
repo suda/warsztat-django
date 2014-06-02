@@ -4,7 +4,7 @@
 
 Python jest dynamicznie typowanym językiem interpretowanym którego składnia jest bardzo zbliżona do języka angielskiego, nie używa tylu znaków interpunkcyjnych jak języki wywodzące się z C (jak Java lub PHP). Bardzo ważnym aspektem są wcięcia, które są wymagane oraz w obrębie pliku muszą używać tego samego stylu (spacje lub tabulacja). Jest to najczęstszy ból dla początkujących lecz z czasem staje się odruchowe i powoduje czysty i czytelny kod.
 
-Wykonywanie kodu Pythona może następować na dwa sposoby: uruchamianie zawartości pliku oraz z poziomu interaktywnej konsoli która pozwala na przyjemne eksperymentowanie z językiem.
+Wykonywanie kodu Pythona może następować na dwa sposoby: poprzez uruchamianie zawartości pliku oraz z poziomu interaktywnej konsoli która pozwala na przyjemne eksperymentowanie z językiem.
 
 ## Instalacja
  
@@ -17,7 +17,7 @@ Każda dystrybucja powinna posiadać paczki Pythona, jedynie należy je zainstal
 ### OS X
  Na każdym systemie OS X dostępny jest Python 2.7.x.
 
-## Pip
+## pip
 Jedną z cech Pythona pozwalającą na szybsze tworzenie projektów jest modularność. Jednym miejscem gdzie zbierane są wszystkie biblioteki to repozytoruim PyPi: [https://pypi.python.org/pypi](https://pypi.python.org/pypi).
 
 Aby łatwiej instalować paczki PyPi powstało narzędzie `pip`. Dzięki niemu, można jedną linią poleceń zainstalować wymaganą paczkę w wymaganej wersji lub nawet zainstalować wszystkie zależności z pliku tekstowego. Aby zainstalować `pip` należy:
@@ -29,7 +29,7 @@ Aby łatwiej instalować paczki PyPi powstało narzędzie `pip`. Dzięki niemu, 
 4. Dodajć ścieżki `C:\Python27` oraz `C:\Python\Scripts` do zmiennej środowiskowej PATH
 
 ### Linux
-Pip powinien być dostępny w managerze pakietów jako `python-pip`.
+pip powinien być dostępny w managerze pakietów jako `python-pip`.
 
 ### OS X
 W systemie domyślnie zainstalowany jest przestarzały manager paczek Pythona o nazwie `easy_install`. Można go użyć do zainstalowania pipa:
@@ -40,7 +40,7 @@ $ sudo easy_install pip
 
 ### requirements.txt
 
-`pip` posiada parametr `-r` w którym można podać plik tekstowy zawierający listę paczek które mają zostać zainstalowane. Zwyczajowo taki plik nazywany jest `requirements.txt` i jest umieszczony w głównym katalogu projektu. Aby stworzyć taki plik, najszybszym sposobem jest zrzucenie zainstalowanych paczek komendą:
+`pip` posiada parametr `-r` w którym można podać plik tekstowy zawierający listę paczek które mają zostać zainstalowane. Zwyczajowo taki plik nazywany jest `requirements.txt` i jest umieszczany w głównym katalogu projektu. Aby stworzyć taki plik, najszybszym sposobem jest zrzucenie zainstalowanych paczek komendą:
 
 ```
 $ pip freeze > requirements.txt
@@ -180,7 +180,7 @@ In [6]: l[:-1]
 Out[6]: ['a', 'b', 'c', 'd']
 ```
 
-### Tupla
+### Tupla (krotka)
 
 ang. `touple`, jest odmianą listy której nie można modyfikować. Definiowana z użyciem nawiasów okrągłych.
 
@@ -212,7 +212,7 @@ In [5]: t2
 Out[5]: (2,)
 ```
 
-Należy pamiętać aby przy inicjacji jednoelementowej tupli, dodać przecinek ponieważ w przeciwnym wypadku zamiast tupli otrzymamy zmienną o wartości przekazanej przy inicjacji:
+Należy pamiętać aby przy inicjacji jednoelementowej tupli dodać przecinek ponieważ w przeciwnym wypadku zamiast tupli otrzymamy zmienną o wartości przekazanej przy inicjacji:
 
 ```
 In [6]: t3 = (2)
@@ -221,7 +221,7 @@ In [7]: t3
 Out[7]: 2
 ```
 
-Tupla, choć nie edytowalna, może podlegać łączeniu oraz innym operatorom:
+Tupla, choć nie jest edytowalna, może podlegać łączeniu oraz innym operatorom:
 
 ```
 In [1]: t1 = (1, 2)
@@ -350,7 +350,7 @@ Dodatkowo funkcje mogą przyjmować dwa specjalne parametry: `*args` i `**kwargs
 * ***args** - lista przekazanych argumentów
 * ****kwargs** - słownik przekazanych argumentów nazwanych
 
-Deklarując te parametry, funkacja może otrzymywać zmienną ilość parametrów:
+Deklarując te parametry, funkcja może otrzymywać zmienną ilość parametrów:
 
 &nbsp;
 
@@ -545,8 +545,8 @@ photogram
 
 Zadania poszczególnych plików to:
 
-* `mange.py` - nakładka na `django-admin.py` pozwalająca na zarządzanie projektem
-* `__init__.py` - plik deklarujący Pythonowi iż ninejszy folder jest modułem
+* `manage.py` - nakładka na `django-admin.py` pozwalająca na zarządzanie projektem
+* `__init__.py` - plik deklarujący Pythonowi iż niniejszy folder jest modułem
 * `settings.py` - plik ustawień Django
 * `urls.py` - główne deklaracje adresów URL
 * `wsgi.py` - konfiguracja WSGI, protokołu służącego do komunikacji z serwerem WWW
@@ -605,7 +605,7 @@ $ python manage.py runserver_plus
 
 ## Pierwsza aplikacja
 
-Projekty Django składają się z małych, modularnych części zwanych aplikacjami. Idęą Django jest DRY czyli "nie powtarzaj się", dlatego aplikacje powinny być pisane tak aby bez modyfikacji można było je użyć w innym projekcie. Mając wielką bazę użytkowników, Django doczekało się wielu zewnętrznych aplikacji do blogów, for, galerii, zarządzania treścią itd. Przed rozpoczęciem pisania nowej funkcjonalności od zera, proponuję przejrzenie strony Django Packages [https://www.djangopackages.com/](https://www.djangopackages.com/) aby sprawdzić czy już ktoś tego nie zrobił.
+Projekty Django składają się z małych, modularnych części zwanych aplikacjami. Ideą Django jest DRY czyli "nie powtarzaj się", dlatego aplikacje powinny być pisane tak aby bez modyfikacji można było je użyć w innym projekcie. Mając wielką bazę użytkowników, Django doczekało się wielu zewnętrznych aplikacji do blogów, for, galerii, zarządzania treścią itd. Przed rozpoczęciem pisania nowej funkcjonalności od zera, proponuję przejrzenie strony Django Packages [https://www.djangopackages.com/](https://www.djangopackages.com/) aby sprawdzić czy już ktoś tego nie zrobił.
 
 Aby stworzyć aplikację, należy wykonać:
 
@@ -638,11 +638,11 @@ Poszczególne pliki to:
 
 ## MVC/MTV
 
-Django korzysta z metodologii MVC czyli model-widok-kontroler. Jej idęą jest rozdzielenie kodu aplikacji na trzy części:
+Django korzysta z metodologii MVC czyli model-widok-kontroler. Jej ideą jest rozdzielenie kodu aplikacji na trzy części:
 
 * **kontroler** - służy do komunikacji z modelem, modyfikując jego stan lub wartości oraz z widokiem który instruuje w jaki sposób prezentować dane z modelu
 * **model** - służy do zarządzania danymi w aplikacji (np. przechowywania ich w bazie danych)
-* **widok** - służy do prezentowania danych z modelu dla użytkownika
+* **widok** - służy do prezentowania danych z modelu użytkownikowi
 
 Istnieje popularna idea o "grubym modelu i chudym kontrolerze". Dyktuje ona aby jak najwięcej logiki przechowywać w modelach a pozostawić kontrolery do "spinania" widoków z kontrolerami.
 
@@ -731,7 +731,7 @@ urlpatterns = patterns('',
 )
 ```
 
-* łapanie wyjątku przy importowaniu zostało stworzone przez `django_extensions` przy tworzeniu aplikacji. Jako, że 1.6 jest aktualną wersją, można usunąć cały blok `try … except` i zamienić na pojedyńczy import `from django.conf.urls import *`.
+* łapanie wyjątku przy importowaniu zostało stworzone przez `django_extensions` przy tworzeniu aplikacji. Jako, że 1.6 jest aktualną wersją, można usunąć cały blok `try … except` i zamienić na pojedynczy import `from django.conf.urls import *`.
 * import widoku wykonany jest za pomocą wygodnego triku w postaci znaku `.`, pozwalającego na zaimportowanie modułów używając względnej ścieżki. Przydatny sposób oszczędzający czas przy refactoringu
 * definicja ścieżki posiada parametr `name` który używany jest przy generowaniu adresu do widoku z poziomu kodu
 
@@ -823,7 +823,7 @@ Django posiada wiele typów pól, m.in.:
 Dodatkowo każde pole dziedziczące po `django.db.models.Field` posiada takie atrybuty jak:
 
 * **choices** - pozwala przekazać listę lub tuplę z możliwymi wartościami oraz ich opisami
-* **db_index** - równe `True` wymusi nałożenie indeksu w bazie danych. Pola typu `ForeignKey` automatycznie go nakładają, lecz może być przydantny także na innych polach
+* **db_index** - równe `True` wymusi nałożenie indeksu w bazie danych. Pola typu `ForeignKey` automatycznie go nakładają, lecz może być przydatny także na innych polach
 * **default** - domyślna wartość pola
 * **unique** - równe `True` wymusi unikalność wartości tego pola (tj. jego wartość nie może się powtarzać)
 * **verbose_name** oraz **help_text** - przechowuje czytelną nazwę pola oraz pomoc. Używane w panelu administracyjnym oraz formularzach
@@ -931,7 +931,7 @@ Running migrations for main:
 Installed 0 object(s) from 0 fixture(s)
 ```
 
-Poza migracjami schematu, South pozwala także tworzych migracje danych (np. przenoszenie danych pomiędzy tabelami). W ten sposób zarządzając zmianami w bazie, można być pewnym takiego samego schematu na wszystkich maszynach.
+Poza migracjami schematu, South pozwala także tworzyć migracje danych (np. przenoszenie danych pomiędzy tabelami). W ten sposób zarządzając zmianami w bazie, można być pewnym takiego samego schematu na wszystkich maszynach.
 
 &nbsp;
 
@@ -1008,7 +1008,7 @@ In [3]: Photo.objects.count() # Ilość obiektów
 Out[3]: 2
 ```
 
-lub pojedyńczy obiekt po jego kluczu głównym (`pk`):
+lub pojedynczy obiekt po jego kluczu głównym (`pk`):
 
 ```
 In [4]: Photo.objects.get(pk=1)
@@ -1058,7 +1058,7 @@ Wszystkie możliwe metody dostępne są pod adresem: [https://docs.djangoproject
 
 ## Panel administracyjny
 
-Funkcją w Django która najbardziej oszczędza czas jest panel administracyjny automatycznie generowany na podstawie modeli. Po uruchomieniu `runserver_plus`, należy otworzyć w przeglądarce adres [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) i zalogować się danymi podanymi przy tworzeniu użytkownika.
+Funkcjonalnością w Django która najbardziej oszczędza czas jest panel administracyjny automatycznie generowany na podstawie modeli. Po uruchomieniu `runserver_plus`, należy otworzyć w przeglądarce adres [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) i zalogować się danymi podanymi przy tworzeniu użytkownika.
 
 Jak widać panel już posiada możliwość zarządzania użytkownikami oraz grupami. Jedną rzecz jaką może przeszkadzać, jest jego język. Aby zmienić go na polski, należy w pliku `settings.py` zmienić wartość zmiennej `LANGUAGE_CODE` na `pl`:
 
@@ -1139,7 +1139,7 @@ Lista zdjęć jest już dosyć rozbudowana, można zająć się wzbogacaniem wid
 raw_id_fields = ('user',)
 ```
 
-Innymi przydatnymi własnościami które w przypadku tego modelu nie są potrzebne, są bardzo przydatne to para `fields` i `exclude`  które pozwalają wyświetlać tylko podane pola lub wykluczyć je z edycji w panelu.
+Innymi przydatnymi własnościami które w przypadku tego modelu nie są potrzebne, jest para pól `fields` i `exclude`, które pozwalają wyświetlać tylko podane pola lub wykluczyć je z edycji w panelu.
 
 Pełna dokumentacja panelu administracyjnego dostępna jest pod adresem: [https://docs.djangoproject.com/en/1.6/ref/contrib/admin/](https://docs.djangoproject.com/en/1.6/ref/contrib/admin/).
 
@@ -1297,7 +1297,7 @@ INSTALLED_APPS = (
 )
 ```
 
-Stworzony szablon należy wyrenderować. Django posiada skrót króry renderuje szablon i zwraca `HttpResponse` z nim:
+Stworzony szablon należy wyrenderować. Django posiada skrót, który renderuje szablon i zwraca wraz z nim `HttpResponse`:
 
 ```python
 from django.shortcuts import render
@@ -1540,7 +1540,7 @@ class MainTestCase(TestCase):
         Photo.objects.create(user=user, title=u'Photo without image', published=False)
 
     def test_empty_photos_list(self):
-    	"""Sprawdzenie czy zdjęcia z publisjed=False nie są pokazywane"""
+    	"""Sprawdzenie czy zdjęcia z published=False nie są pokazywane"""
     	client = Client()
     	response = client.get('/')
     	self.assertEqual(response.content.find('<article>'), -1)
@@ -1561,7 +1561,7 @@ Destroying test database for alias 'default'...
 
 # Praca z repozytorium Git
 
-Istnieje wiele systemów kontroli wersji, ale żaden nie jest aktualnie tak popularny jak `git`. Darmowy hosting repozytorów na GitHub lub Bitbucket (darmowe do 10 prywatnych repozytorów), obsługa deployowania na Heroku, Microsoft Azure oraz rozproszona architektura czynią z Gita nieodłączne narzędzie programisty.
+Istnieje wiele systemów kontroli wersji, ale żaden nie jest aktualnie tak popularny jak `git`. Darmowy hosting repozytorów na GitHub lub Bitbucket (darmowe do 10 prywatnych repozytorów), obsługa deployowania na Heroku czy Microsoft Azure oraz rozproszona architektura czynią z Gita nieodłączne narzędzie programisty.
 
 ## Instalacja
 
@@ -1661,12 +1661,18 @@ Changes to be committed:
 Jak widać pliki zostały dodane do sekcji **Changes to be committed**. Teraz należy je tylko zatwierdzić:
 
 ```
-$ git commit -m "Pierwszy commit"
+$ git commit -am "Pierwszy commit"
+```
+
+Jeżeli chcemy zatwierdzić zmiany w tylko jednym pliku, należy podać do niego ścieżkę jako argument:
+
+```
+$ git commit manage.py -m "Zmiany w manage.py"
 ```
 	
 Po każdej zmianie wystarczy powtarzać cykl `git add` i `git commit`.
 
-Aby zacząć współdzielić kod, należy dodać serwer. Można założyć konto na Githubie (darmowe dla otwartych repozytoriów) lub Bitbuckecie (darmowe dla otwartych i do 10 prywatnych), następnie stworzyć na nim repozytorium. Na stronie podsumowania będzie widoczny adres repo zaczynający się od `git@` (zwany czasami **clone URL**) który należy skopiować do terminala:
+Aby zacząć współdzielić kod, należy dodać serwer. Można założyć konto na Githubie (darmowe dla otwartych repozytoriów) lub Bitbuckecie (darmowe dla otwartych i do 10 prywatnych), następnie stworzyć na nim repozytorium. Na stronie podsumowania będzie widoczny adres repozytorium zaczynający się od `git@` (zwany czasami **clone URL**) który należy skopiować do terminala:
 
 ```
 $ git remote add origin ADRES
