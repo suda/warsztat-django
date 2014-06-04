@@ -1834,3 +1834,32 @@ except ImportError:
 ```
 
 Ważne jest, aby ten import był dodany na samym końcu pliku ustawnień.
+
+## Django Debug Toolbar
+
+Kolejną paczką bardzo przydatną przy odpluskwianu i optymalizacji jest Django Debug Toolbar która wyświetla pasek boczny z szczegółami n.t. zapytań SQL, nagłówków HTTP oraz wiele innych. Najpierw należy zainstalować paczkę:
+
+```
+$ pip install django-debug-toolbar
+```
+
+następnie dodać do `INSTALLED_APPS`:
+
+
+```python
+INSTALLED_APPS = (
+    ...
+    'debug_toolbar',
+)
+```
+
+oraz dodać na początku `MIDDLEWARE_CLASSES`:
+
+```python
+MIDDLEWARE_CLASSES = (   	
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ...
+)
+```
+
+Jeśli `DEBUG` ustawiony jest na `True`, po odświeżeniu strony po prawej stronie pojawi się zakładka z napisem **DjDT**.
