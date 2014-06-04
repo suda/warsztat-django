@@ -26,7 +26,7 @@ Aby łatwiej instalować paczki PyPi powstało narzędzie `pip`. Dzięki niemu, 
 1. Pobrać plik: [https://raw.github.com/pypa/pip/master/contrib/get-pip.py](https://raw.github.com/pypa/pip/master/contrib/get-pip.py)
 2. Uruchomić wiersz poleceń (`cmd.exe`)
 3. Wykonać plik `get-pip.py` za pomocą Pythona: `C:\Python27\python.exe get-pip.py`
-4. Dodajć ścieżki `C:\Python27` oraz `C:\Python\Scripts` do zmiennej środowiskowej PATH
+4. Dodajć ścieżki `C:\Python27` oraz `C:\Python27\Scripts` do zmiennej środowiskowej PATH
 
 ### Linux
 pip powinien być dostępny w managerze pakietów jako `python-pip`.
