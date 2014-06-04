@@ -1821,3 +1821,16 @@ u'1'
 ```
 
 Jest to bardzo wygodny sposób na odnalezienie błędów bez cyklu zmień/odśwież.
+
+## local_settings.py
+
+Aby odróżnić konfigurację deweloperską od produkcyjnej najczęściej stosowanym sposobem, jest stworzenie pliku `local_settings.py` zawierającego ustawienia lokalne oraz załączenie go pod koniec `settings.py`:
+
+```python
+try:
+    from local_settings import *
+except ImportError:
+    pass
+```
+
+Ważne jest, aby ten import był dodany na samym końcu pliku ustawnień.
