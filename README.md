@@ -1771,7 +1771,7 @@ Changes to be committed:
 Jak widać pliki zostały dodane do sekcji **Changes to be committed**. Teraz należy je tylko zatwierdzić:
 
 ```
-$ git commit -am "Pierwszy commit"
+$ git commit -m "Pierwszy commit"
 ```
 
 Jeżeli chcemy zatwierdzić zmiany w tylko jednym pliku, należy podać do niego ścieżkę jako argument:
