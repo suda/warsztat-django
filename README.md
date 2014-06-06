@@ -1559,6 +1559,60 @@ OK
 Destroying test database for alias 'default'...
 ```
 
+# Tłumaczenie
+
+Jedną z cech większych projektów jest dostępność w więcej niż jednym języku. Django posiada wbudowaną obsługę I18N oraz L10N czyli popularnych metod na tłumaczenie aplikacji oraz zapiewnianie odpowiednich formatow dat, walut itp.
+
+Aby rozpocząć pracę z tłumaczeniem, należy przekazać wszystkie ciągi znaków które mają jej podlegać, specjalnym funkcjom. W przypadku ciągów znaków w kodzie Pythona, należy użyć funkcji `_`:
+
+```python
+from django.utils.translation import ugettext as _
+
+def home(request):
+    welcome_message = _("Welcome to my site.")
+    return HttpResponse(welcome_message)
+```
+
+W przypadku szablonów, należy załadować bibliotekę `i18n` oraz przekazać ciągi do tagu `trans`:
+
+```html
+{% load i18n %}
+<title>{% trans "Translate me" %}</title>
+<title>{% trans zmienna %}</title>
+```
+
+Następnie należy włączyć middleware tłumaczeń dodając go do `MIDDLEWARE_CLASSES` w `settings.py` przed `django.middleware.common.CommonMiddleware`:
+
+```python
+MIDDLEWARE_CLASSES = (
+	...
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+	…
+)
+```
+
+oraz dodać obsługiwane języki:
+
+```python
+LANGUAGES = (
+  ('pl', 'Polski'),
+  ('en', 'English'),
+)
+```
+
+Aby wygenerować pliki tłumaczeń, należy stworzyć katalog `locale` w katalogu głównym aplikacji a następnie uruchomić komendę:
+
+```
+$ python manage.py makemessages -a
+```
+
+Wygeneruje to plik `django.po` w katalogu `locale/KOD_JĘZYKA/LC_MESSAGES` dla każdego języka. Plik ten jest plikiem tekstowym, który można modyfikować ręcznie, lub użyć darmowego narzędzia typu POEdit. Po przetłumaczeniu plików, należy je skompilować:
+
+```
+$ python manage.py compilemessages
+```
+
 # Praca z repozytorium Git
 
 Istnieje wiele systemów kontroli wersji, ale żaden nie jest aktualnie tak popularny jak `git`. Darmowy hosting repozytorów na GitHub lub Bitbucket (darmowe do 10 prywatnych repozytorów), obsługa deployowania na Heroku czy Microsoft Azure oraz rozproszona architektura czynią z Gita nieodłączne narzędzie programisty.
@@ -1862,4 +1916,4 @@ MIDDLEWARE_CLASSES = (
 )
 ```
 
-Jeśli `DEBUG` ustawiony jest na `True`, po odświeżeniu strony po prawej stronie pojawi się zakładka z napisem **DjDT**.
+Jeśli `DEBUG` ustawiony jest na `True`, po odświeżeniu strony po prawej stronie pojawi się zakładka z napisem **DjDT**. 
