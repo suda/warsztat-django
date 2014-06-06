@@ -1314,6 +1314,48 @@ return render(request, 'base.html', {
 Ostatni przekazany parametr to tzw. kontekst szablonu czyli słownik zawierający zmienne które mają zostać do niego przekazane.
 Po odświeżeniu powinna pojawić się strona z wyrenderowanego szablonu.
 
+
+## Własne tagi oraz filtry
+
+Choć ilość wbudowanych tagów i filtrów jest dosyć spora, tak jak każdą inną część Django, można bardzo łatwo dodawać własne. Najszybciej, można to wykonać komendą:
+
+```
+$ python manage.py create_template_tags main
+```
+
+W katalogu aplikacji, utworzony zostanie moduł `templatetags` a wewnątrz niego plik `main_tags.py`. Dodanie własnego tagu, wymaga zadeklarowania funkcji oraz opasania jej dekoratorem `@register.simple_tag()`:
+
+```python
+@register.simple_tag()
+def witaj(name):
+	return mark_safe(u'Witaj %s' % name)
+```
+
+Biblioteka jest gotowa do załadowania a tag gotowy jest do użycia w szablonie np.:
+
+```html
+{% load main_tags %}
+<h1>{%  witaj "Wojtek" %}</h1>
+```
+
+Tak samo można dodać własny filtr, opasając go dekoratorem `@register.filter`:
+
+```python
+@register.filter
+def dodaj_wykrzyknik(tekst):
+    return u'%s!' % unicode(tekst)
+```
+
+Następnie można go użyć w szablonie:
+
+```html
+{{ title|dodaj_wykrzyknik }}
+```
+
+	**Ćwiczenie**
+	
+	Spróbuj stworzyć własny tag który przyjmuje dwa parametry tekstowe, łączy je odstępem i zwraca do szablonu oraz własny filtr który co drugą literę przekazanego parametru zmieni na wielką.
+
 ## Formularze
 
 Mając zdefiniowany model zamiast żmudnie kodować formularz w HTML, można użyć specjalnych klas w Django o nazwie `ModelForm` który potrafi generować je automatycznie. Należy więc otworzyć plik `forms.py` i umieścić w nim:
@@ -1558,6 +1600,20 @@ Ran 1 test in 0.166s
 OK
 Destroying test database for alias 'default'...
 ```
+
+# Własne komendy manage.py
+
+Często gdy należy cyklicznie wykonywać fragment kodu Django, przydają się własne komendy `manage.py`. Aby stworzyć taką komendę, należy uruchomić najpierw inną:
+
+```
+$ python manage.py create_command main
+```
+
+Stworzy to moduł `management` wewnątrz aplikacji a w niego moduł `commands`. Zostanie także utworzony w nim plik `sample.py`. Wewnątrz niego można dodawać dowolne polecenia w metodzie `handle` klasy `Command`.
+
+	**Ćwiczenie**
+	
+	Spróbuj dodać komendę która wszystkim modelom Audio z `published` == False, ustawi status = 2.
 
 # Tłumaczenie
 
