@@ -1352,9 +1352,9 @@ Następnie można go użyć w szablonie:
 {{ title|dodaj_wykrzyknik }}
 ```
 
-	**Ćwiczenie**
-	
-	Spróbuj stworzyć własny tag który przyjmuje dwa parametry tekstowe, łączy je odstępem i zwraca do szablonu oraz własny filtr który co drugą literę przekazanego parametru zmieni na wielką.
+> **Ćwiczenie**:
+> 
+> Spróbuj stworzyć własny tag który przyjmuje dwa parametry tekstowe, łączy je odstępem i zwraca do szablonu oraz własny filtr który co drugą literę przekazanego parametru zmieni na wielką.
 
 ## Formularze
 
@@ -1611,9 +1611,9 @@ $ python manage.py create_command main
 
 Stworzy to moduł `management` wewnątrz aplikacji a w niego moduł `commands`. Zostanie także utworzony w nim plik `sample.py`. Wewnątrz niego można dodawać dowolne polecenia w metodzie `handle` klasy `Command`.
 
-	**Ćwiczenie**
-	
-	Spróbuj dodać komendę która wszystkim modelom Audio z `published` == False, ustawi status = 2.
+> **Ćwiczenie**:
+> 
+> Spróbuj dodać komendę która wszystkim modelom Audio z `published` == False, ustawi status = 2.
 
 # Tłumaczenie
 
